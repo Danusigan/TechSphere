@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python Logging: A Practical Introduction | TechSphere</title><meta name="description" content="Learn Python logging levels, basicConfig, formatted messages and why logging is better than scattered print statements.">
+<link rel="canonical" href="https://YOUR-DOMAIN.com/articles/python-logging-basics.html">
+<meta name="robots" content="index,follow"><meta property="og:type" content="article"><meta property="og:title" content="Python Logging: A Practical Introduction"><meta property="og:description" content="Learn Python logging levels, basicConfig, formatted messages and why logging is better than scattered print statements."><meta property="og:site_name" content="TechSphere">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Python Logging: A Practical Introduction","description":"Learn Python logging levels, basicConfig, formatted messages and why logging is better than scattered print statements.","datePublished":"2026-11-26","author":{"@type":"Organization","name":"TechSphere"},"publisher":{"@type":"Organization","name":"TechSphere"},"mainEntityOfPage":"https://YOUR-DOMAIN.com/articles/python-logging-basics.html"}
+</script></head><body>
+<header class="site-header"><div class="container header-inner"><a class="brand" href="../index.html"><span class="brand-mark">T</span><span>Tech<span class="brand-accent">Sphere</span></span></a><button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button><nav class="main-nav"><a href="../index.html">Home</a><a href="../index.html#latest">Articles</a><a href="../about.html">About</a><a href="../contact.html">Contact</a></nav></div></header>
+<main><section class="article-hero"><div class="container"><div class="breadcrumb"><a href="../index.html">Home</a> / <a href="../index.html#latest">Articles</a> / Python</div><p class="eyebrow">PYTHON</p><h1>Python Logging: A Practical Introduction</h1><p class="article-deck">Logging gives your Python application a consistent way to record what happened. It becomes especially useful when code runs in servers, scheduled jobs or production systems.</p><div class="article-byline">By TechSphere Editorial Team · November 26, 2026 · 6 min read</div></div></section>
+<div class="container article-layout"><article class="article-content">
+<h2 id="why">Why use logging instead of print?</h2><p><code>print()</code> is useful when experimenting, but it does not provide built-in severity levels, timestamps or flexible destinations. Python's standard <code>logging</code> module supports these features and is included with Python.</p>
+<h2 id="levels">Understand logging levels</h2><ul><li><code>DEBUG</code> — detailed information useful during development.</li><li><code>INFO</code> — normal events showing that the application is working.</li><li><code>WARNING</code> — something unexpected happened, but execution can continue.</li><li><code>ERROR</code> — an operation failed.</li><li><code>CRITICAL</code> — a serious failure may prevent the application from continuing.</li></ul>
+<h2 id="basic">Create your first logger</h2><pre><code>import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s"
+)
+
+logger = logging.getLogger(__name__)
+
+logger.info("Application started")
+logger.warning("Retrying request")
+logger.error("Could not process document")</code></pre><p>The configured level controls which messages are emitted. With <code>INFO</code>, debug messages are ignored while INFO and higher-severity messages are shown.</p>
+<h2 id="exceptions">Log exceptions with context</h2><pre><code>try:
+    process_document("input.pdf")
+except Exception:
+    logger.exception("Document processing failed")</code></pre><p><code>logger.exception()</code> records the message and exception traceback. Use it inside an exception handler.</p>
+<h2 id="good-practices">Good logging practices</h2><ul><li>Use a module-level logger with <code>logging.getLogger(__name__)</code>.</li><li>Include useful identifiers such as a job ID when appropriate.</li><li>Do not log passwords, API keys, tokens or unnecessary personal data.</li><li>Choose severity levels consistently.</li><li>Configure handlers and log rotation for long-running applications.</li></ul>
+<div class="callout"><strong>Key takeaway:</strong> Good logs explain what happened, where it happened and enough context to investigate — without exposing secrets.</div>
+<hr style="border:0;border-top:1px solid #e8ebf2;margin:45px 0 25px"><p><strong>About this guide:</strong> TechSphere publishes educational technology content. Verify commands and implementation details against the official documentation for your software versions before using them in production.</p><p><a class="read-link" href="../index.html#latest">← Back to all articles</a></p></article><aside class="article-sidebar"><strong>In this article</strong><a href="#why">Why use logging instead of print?</a>
+<a href="#levels">Understand logging levels</a>
+<a href="#basic">Create your first logger</a>
+<a href="#exceptions">Log exceptions with context</a>
+<a href="#good-practices">Good logging practices</a><hr style="border:0;border-top:1px solid #e4e8f0;margin:15px 0"><a href="../privacy-policy.html">Privacy policy</a><a href="../disclaimer.html">Editorial disclaimer</a></aside></div></main>
+<footer class="site-footer"><div class="container footer-main"><div><a class="brand" href="../index.html"><span class="brand-mark">T</span><span>Tech<span class="brand-accent">Sphere</span></span></a><p>AI, programming and technology made simple.</p></div><div class="footer-links"><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy-policy.html">Privacy policy</a><a href="../disclaimer.html">Disclaimer</a></div></div><div class="container footer-bottom"><span>© <span class="year"></span> TechSphere.</span><span>Built for curious minds.</span></div></footer><script src="../script.js"></script><script>document.querySelectorAll('.year').forEach(e=>e.textContent=new Date().getFullYear())</script></body></html>
